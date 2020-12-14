@@ -1,0 +1,10 @@
+- name: validator
+  hosts: localhost
+  connection: local
+  tasks:
+  - name: validate docker container
+    uri:
+      url: http://dockerhost:8080
+      return_content: yes
+    register: returnitem
+    failed_when: "'Look Good' not in returnvalue.content"
